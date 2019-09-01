@@ -1,0 +1,8 @@
+09:22 <marijnfs> do you check the axes or unbuttonpressed or somehting?
+09:22 <marijnfs> and which ID
+10:14 <IkeKrull> the trigger is an 'analog' value which ranges from fully released to fully depressed
+10:15 <IkeKrull> one of my controllers is a bit sticky so i usually use a threshold value under which the trigger is considered 'not pressed'
+10:16 <IkeKrull> i get the left and right controllers like: vrSystem->GetTrackedDeviceIndexForControllerRole(vr::TrackedControllerRole_LeftHand);
+10:17 <IkeKrull> then get the controller state e.g. vrSystem->GetControllerState( i, &controllerState, sizeof(controllerState) ) where i is the id for left/right
+10:18 <IkeKrull> then controllerStatr->rAxis[1].x is trigger on the Vive
+10:21 <IkeKrull> controllerState->rAxis[0].x and controllerState->rAxis[0].y are the trackpad coords. button states are a bitfield i believe, but i have no need for those in my app currently
